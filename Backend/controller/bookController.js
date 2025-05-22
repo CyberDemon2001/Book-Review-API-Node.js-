@@ -4,8 +4,8 @@ const Review = require("../models/ReviewSchema");
 // Function to create a new book
 const createBook = async (req, res) => {
   try {
-    const { title, author, genre, description,averageRating } = req.body;
-    if (!title || !author || !genre || !description || !averageRating) {
+    const { title, author, genre, description } = req.body;
+    if (!title || !author || !genre || !description ) {
       return res.status(400).json({ message: "Please fill all the fields" });
     }
     const existingBook = await Book.findOne({ title });
@@ -17,8 +17,7 @@ const createBook = async (req, res) => {
       title,
       author,
       genre,
-      description,
-      averageRating
+      description
     });
 
     await newBook.save();
