@@ -99,4 +99,6 @@ Review Collection
 | `updatedAt` | Date                   | Auto     | Timestamp when the review was last updated     |
 
 <h2>📘 API Documentation</h2>
-https://documenter.getpostman.com/view/39779844/2sB2qahM93
+
+Detailed Postman API collection is available here:  
+👉 [Postman API Docs](https://documenter.getpostman.com/view/39779844/2sB2qahM93)
