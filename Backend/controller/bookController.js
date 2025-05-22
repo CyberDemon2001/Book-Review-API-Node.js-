@@ -92,19 +92,39 @@ const getBookById = async (req, res) => {
   }
 };
 
+
 const searchBooks = async (req, res) => {
-  try{
-    const {query} = req.query;
+  try {
+    const { title, author} = req.query;
+
+    if (!title || title.trim() === "") {
+      return res.status(400).json({ message: "Search query is required" });
+    }
+
+    const regex = new RegExp(title, "i");
     
-  }
-  catch(error) {
+    const books = await Book.find({
+      $or: [
+        { title: { $regex: regex } },
+        { author: { $regex: regex } }
+      ]
+    });
+
+    if (books.length === 0) {
+      return res.status(404).json({ message: "No matching books found" });
+    }
+
+    res.status(200).json(books);
+  } catch (error) {
     console.error("Error searching books:", error);
     res.status(500).json({ message: "Internal server error" });
   }
-}
+};
+
 
 module.exports = {
   createBook,
   getAllBooks,
-  getBookById
+  getBookById,
+  searchBooks
 };
