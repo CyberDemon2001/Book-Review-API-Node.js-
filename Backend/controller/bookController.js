@@ -92,6 +92,17 @@ const getBookById = async (req, res) => {
   }
 };
 
+const searchBooks = async (req, res) => {
+  try{
+    const {query} = req.query;
+    
+  }
+  catch(error) {
+    console.error("Error searching books:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 module.exports = {
   createBook,
   getAllBooks,
