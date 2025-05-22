@@ -40,9 +40,9 @@ npm install
 <p>4. Enviromnent Variables</p>
 
 ```
-PORT = 3000<br>
-MONGO_URI = mongodb://localhost:27017/bookReviewAPI<br>
-JWT_SECRET = 123456789<br>
+PORT = 3000
+MONGO_URI = mongodb://localhost:27017/bookReviewAPI
+JWT_SECRET = 123456789
 JWT_EXPIRATION = 1d
 ```
 
