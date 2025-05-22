@@ -40,7 +40,10 @@ npm install
 <p>4. Enviromnent Variables</p>
 
 ```
-PORT = 3000 MONGO_URI = mongodb://localhost:27017/bookReviewAPI JWT_SECRET = 123456789 JWT_EXPIRATION = 1d
+PORT = 3000<br>
+MONGO_URI = mongodb://localhost:27017/bookReviewAPI<br>
+JWT_SECRET = 123456789<br>
+JWT_EXPIRATION = 1d
 ```
 
 <p>5. Run the Server</p>
@@ -62,3 +65,38 @@ Technologies used in the project:
 *   Bcrypt
 *   Dotenv
 *   cookie-parser
+
+
+<h2>🗄️ Database Schema</h2>
+
+Book Collection
+| Field         | Type   | Required | Unique | Trimmed | Description                     |
+| ------------- | ------ | -------- | ------ | ------- | ------------------------------- |
+| `title`       | String | Yes      | Yes    | Yes     | The title of the book           |
+| `author`      | String | Yes      | No     | Yes     | Name of the book's author       |
+| `genre`       | String | Yes      | No     | Yes     | Genre/category of the book      |
+| `description` | String | Yes      | No     | No      | A brief description of the book |
+| `createdAt`   | Date   | Auto     | No     | -       | Timestamp when book was created |
+| `updatedAt`   | Date   | Auto     | No     | -       | Timestamp when book was updated |
+
+User Collection
+| Field       | Type   | Required | Unique | Description                     |
+| ----------- | ------ | -------- | ------ | ------------------------------- |
+| `name`      | String | Yes      | No     | Full name of the user           |
+| `email`     | String | Yes      | Yes    | User's email address            |
+| `password`  | String | Yes      | No     | Hashed password of the user     |
+| `createdAt` | Date   | Auto     | No     | Timestamp when user was created |
+| `updatedAt` | Date   | Auto     | No     | Timestamp when user was updated |
+
+Review Collection
+| Field       | Type                   | Required | Description                                    |
+| ----------- | ---------------------- | -------- | ---------------------------------------------- |
+| `user`      | ObjectId (ref: `User`) | Yes      | Reference to the user who submitted the review |
+| `book`      | ObjectId (ref: `Book`) | Yes      | Reference to the book being reviewed           |
+| `rating`    | Number                 | Yes      | Rating given by the user (1 to 5)              |
+| `comment`   | String                 | Yes      | User's textual review of the book              |
+| `createdAt` | Date                   | Auto     | Timestamp when the review was created          |
+| `updatedAt` | Date                   | Auto     | Timestamp when the review was last updated     |
+
+<h2>📘 API Documentation</h2>
+https://documenter.getpostman.com/view/39779844/2sB2qahM93
